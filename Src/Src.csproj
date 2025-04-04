@@ -13,6 +13,7 @@
       <PackageReference Include="Selenium.WebDriver" Version="4.30.0" />
       <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="135.0.7049.4200" />
       <PackageReference Include="System.Data.SQLite" Version="1.0.119" />
+      <PackageReference Include="Terminal.Gui" Version="2.0.0-prealpha.1895" />
     </ItemGroup>
 
 </Project>
