@@ -17,7 +17,6 @@ class Program
         do
         {
             ConsoleUI.Display_MainMenu();
-            
             Console.WriteLine();
             Console.Write("Chọn chức năng: ");
             option = Convert.ToInt32(Console.ReadLine());
@@ -30,6 +29,7 @@ class Program
                     {
                         ConsoleUI.Display_GameMenu();
                         Console.WriteLine();
+                        Console.Write("Chọn chức năng: ");
                         gameOption = Convert.ToInt32(Console.ReadLine());
                         switch (gameOption)
                         {
@@ -57,8 +57,12 @@ class Program
                         }
                     }while (toolsOption != 0);
                     break;
-                default:
-                    ConsoleUI.Display_ErrorMessage();
+                case 10:
+                    string fileName = "Links/RegisterPalworld.txt"; // Hoặc "Links\\RegisterPalworld.txt" nếu dùng trên Windows
+                    string basePath = AppContext.BaseDirectory;
+                    string fullPath = Path.Combine(basePath, fileName);
+                    Console.WriteLine(fullPath);
+                    Console.ReadLine();
                     break;
             }
         }while (option != 0);

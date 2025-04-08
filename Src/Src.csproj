@@ -8,6 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.3" />
       <PackageReference Include="Selenium.Support" Version="4.30.0" />
       <PackageReference Include="Selenium.WebDriver" Version="4.30.0" />
