@@ -1,6 +1,7 @@
 ﻿using Src.Interface;
 using System;
 using System.Text;
+using System.Threading.Channels;
 
 namespace Src.Implementations;
 
@@ -52,7 +53,7 @@ public class ConsoleUI : IConsoleUI
         Console.WriteLine("===== CHÀO MỪNG TỚI TOOL REG HOST =====");
         Console.WriteLine("1. Host Games.");
         Console.WriteLine("2. Host Tools.");
-        Console.WriteLine("0. Exit.");
+        Console.WriteLine("0. Thoát.");
     }
     
     // Hiển thị thng báo cảm ơn.
@@ -61,5 +62,16 @@ public class ConsoleUI : IConsoleUI
         Console.Clear();
         Console.OutputEncoding = Encoding.UTF8;
         Console.WriteLine("!!! CẢM ƠN ĐÃ SỬ DỤNG CHƯƠNG TRÌNH !!!");
+    }
+
+    public static void Display_PalworldMenu()
+    {
+        Console.Clear();
+        Console.OutputEncoding = Encoding.UTF8;
+        Console.WriteLine("MENU PALWORLD");
+        Console.WriteLine("1. Đăng ký tài khoản.");
+        Console.WriteLine("2. Đăng nhập lần đầu (nghĩa là vừa tạo tài khoản - chưa đăng nhập ần nào).");
+        Console.WriteLine("3. Đăng nhập.");
+        Console.WriteLine("0. Thoát.");
     }
 }
