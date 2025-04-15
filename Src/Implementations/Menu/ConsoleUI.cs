@@ -36,12 +36,6 @@ public class ConsoleUI : IConsoleUI
         Console.WriteLine("===== VUI LÒNG CHỌN GAME ĐỂ HOST =====");
         Console.WriteLine("1. Palworld.");
         Console.WriteLine("2. Minecraft.");
-        Console.WriteLine("3. Rust.");
-        Console.WriteLine("4. Satisfactory.");
-        Console.WriteLine("5. Ark Survival Envolved.");
-        Console.WriteLine("6. The forest.");
-        Console.WriteLine("7. Son of The Forest.");
-        Console.WriteLine("8. Conan Exiles.");
         Console.WriteLine("0. Quay lại.");
     }
     
@@ -52,7 +46,7 @@ public class ConsoleUI : IConsoleUI
         Console.OutputEncoding = Encoding.UTF8;
         Console.WriteLine("===== CHÀO MỪNG TỚI TOOL REG HOST =====");
         Console.WriteLine("1. Host Games.");
-        Console.WriteLine("2. Host Tools.");
+        Console.WriteLine("2. Host Tools. (Đang phát triển)");
         Console.WriteLine("0. Thoát.");
     }
     
@@ -70,8 +64,17 @@ public class ConsoleUI : IConsoleUI
         Console.OutputEncoding = Encoding.UTF8;
         Console.WriteLine("MENU PALWORLD");
         Console.WriteLine("1. Đăng ký tài khoản.");
-        Console.WriteLine("2. Đăng nhập lần đầu (nghĩa là vừa tạo tài khoản - chưa đăng nhập ần nào).");
+        Console.WriteLine("2. Đăng nhập lần đầu (nghĩa là vừa tạo tài khoản - chưa đăng nhập lần nào).");
         Console.WriteLine("3. Đăng nhập.");
         Console.WriteLine("0. Thoát.");
+    }
+
+    public static void Display_MinecraftMenu()
+    {
+        Console.Clear();
+        Console.OutputEncoding = Encoding.UTF8;
+        Console.WriteLine("MENU MINECRAFT");
+        Console.WriteLine("1. Đăng ký tài khoản.");
+        Console.WriteLine("2. Đăng nhập.");
     }
 }

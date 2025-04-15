@@ -107,8 +107,9 @@ public class FakeDataGenerator : IFakeDataGenerator
         return postcodes[random.Next(0, postcodes.Length)];
     }
     
-    public static HashSet<string> LoadExistingEmails(string filePath)
+    public static HashSet<string> LoadExistingEmails()
     {
+        string filePath = @"D:\University\Own_Project\2025\AutoRegSparkedHost\Src\Resources\GlobalEmailResource.txt";
         if (!File.Exists(filePath))
         {
             File.WriteAllText(filePath, "");
@@ -129,8 +130,8 @@ public class FakeDataGenerator : IFakeDataGenerator
         string timestamp = vietnamTime.ToString("yyyy-MM-dd HH:mm:ss"); // Định dạng thời gian
         File.AppendAllText(filePath, $"{email}\t\t{timestamp}" + Environment.NewLine);
     }
-    
-    public static string GenerateEmail(HashSet<string> existingEmails, int maxAttempts = 10000)
+
+    public static string GenerateEmail(HashSet<string> existingEmails, string emailPath, int maxAttempts = 10000)
     {
         for (int i = 0; i < maxAttempts; i++)
         {
@@ -143,8 +144,10 @@ public class FakeDataGenerator : IFakeDataGenerator
             {
                 existingEmails.Add("\n");
                 existingEmails.Add(email);
-                string emailPath = @"D:\University\Own_Project\2025\AutoRegSparkedHost\Src\Resources\emails.txt";
                 SaveEmailToFile(emailPath, email);
+                string globalEmailFilePath =
+                    @"D:\University\Own_Project\2025\AutoRegSparkedHost\Src\Resources\GlobalEmailResource.txt";
+                SaveEmailToFile(globalEmailFilePath, email);
                 return email;
             }
         }
@@ -202,7 +205,7 @@ public class FakeDataGenerator : IFakeDataGenerator
                 existingPhones.Add("\n");
                 existingPhones.Add(phoneNumber);
                 string phonenumberPath =
-                    @"D:\University\Own_Project\2025\AutoRegSparkedHost\Src\Resources\phonenumbers.txt";
+                    @"D:\University\Own_Project\2025\AutoRegSparkedHost\Src\Resources\Palworld\phonenumbers.txt";
                 SavePhoneToFile(phonenumberPath, phoneNumber);
                 return phoneNumber;
             }

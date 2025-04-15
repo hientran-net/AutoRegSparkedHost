@@ -76,9 +76,7 @@ public class PalworldTask : IAutomationTask
 
             try
             {
-                string url =
-                    FileReader.ReadLink(
-                        "D:\\University\\Own_Project\\2025\\AutoRegSparkedHost\\Src\\Resources\\RegisterPalworld.txt");
+                string url = @"https://billing.sparkedhost.com/cart.php?a=add&pid=292";
                 driver.Navigate().GoToUrl(url);
                 Console.WriteLine($"Đã điều hướng đến URL: {url}");
             }
@@ -312,11 +310,12 @@ public class PalworldTask : IAutomationTask
                     Thread.Sleep(random.Next(300, 800));
                     
                     // Email
-                    string emailPath = @"D:\University\Own_Project\2025\AutoRegSparkedHost\Src\Resources\emails.txt";
-                    var existingEmail = FakeDataGenerator.LoadExistingEmails(emailPath);
+                    string emailPath =
+                        @"D:\University\Own_Project\2025\AutoRegSparkedHost\Src\Resources\Palworld\emails.txt";
+                    var existingEmail = FakeDataGenerator.LoadExistingEmails();
                     Console.WriteLine($"Tạo email thành công.");
                     IWebElement emailInput = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("inputEmail")));
-                    string newEmail = FakeDataGenerator.GenerateEmail(existingEmail);
+                    string newEmail = FakeDataGenerator.GenerateEmail(existingEmail, emailPath);
                     HumanLikeType(emailInput, newEmail, random);
                     Console.WriteLine($"Đã điền Email: {newEmail}");
                     Thread.Sleep(random.Next(500, 1200));
@@ -334,7 +333,7 @@ public class PalworldTask : IAutomationTask
                     
                     // 3. Tạo số điện thoại
                     string phonenumberPath =
-                        @"D:\University\Own_Project\2025\AutoRegSparkedHost\Src\Resources\phonenumbers.txt";
+                        @"D:\University\Own_Project\2025\AutoRegSparkedHost\Src\Resources\Palworld\phonenumbers.txt";
                     var existingPhonenumber = FakeDataGenerator.LoadExistingPhones(phonenumberPath);
                     string newPhonenumber = FakeDataGenerator.GenerateVietnamPhone(existingPhonenumber);
                     Console.WriteLine("Tạo số điện thoại mới thành công.");
@@ -441,7 +440,7 @@ public class PalworldTask : IAutomationTask
                     {
                         Console.WriteLine("Mật khẩu đã được điền thành công và khớp nhau!");
                         string passwordFilePath =
-                            @"D:\University\Own_Project\2025\AutoRegSparkedHost\Src\Resources\passwords.txt";
+                            @"D:\University\Own_Project\2025\AutoRegSparkedHost\Src\Resources\Palworld\passwords.txt";
                         FakeDataGenerator.SavePasswordToFile(passwordFilePath, password1);
                     }
                     else
@@ -596,7 +595,7 @@ public class PalworldTask : IAutomationTask
             Random random = new Random();
             
             // Điều hướng đến trang đăng nhập (thay bằng URL thực tế của bạn)
-            string loginUrl = "https://control.sparkedhost.us/"; // Thay bằng URL đăng nhập thực tế
+            string loginUrl = @"https://control.sparkedhost.us/"; // Thay bằng URL đăng nhập thực tế
             driver.Navigate().GoToUrl(loginUrl);
             Console.WriteLine($"Đã điều hướng đến trang đăng nhập: {loginUrl}");
             Thread.Sleep(random.Next(1000, 2000)); // Đợi tự nhiên
@@ -609,8 +608,11 @@ public class PalworldTask : IAutomationTask
             Thread.Sleep(random.Next(1000, 2000));
             
             // Tìm phần input email và password
-            string email = FileReader.GetEmailToLogin();
-            string password = FileReader.GetPasswordToLogin(email);
+            string emailFilePath = @"D:\University\Own_Project\2025\AutoRegSparkedHost\Src\Resources\Palworld\emails.txt";
+            string passwordFilePath =
+                @"D:\University\Own_Project\2025\AutoRegSparkedHost\Src\Resources\Palworld\passwords.txt";
+            string email = FileInteract.GetEmailToLogin(emailFilePath);
+            string password = FileInteract.GetPasswordToLogin(email, passwordFilePath);
             
             IWebElement emailInput = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("inputEmail")));
             HumanLikeType(emailInput, email, random);
@@ -657,4 +659,5 @@ public class PalworldTask : IAutomationTask
             // Không đóng driver ở đây nếu muốn tiếp tục sử dụng
         }
     }
+    
 }

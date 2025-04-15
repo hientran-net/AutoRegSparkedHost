@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Text;
 using System.Xml;
+using OpenQA.Selenium.DevTools.V132.Page;
 using OpenQA.Selenium.DevTools.V134.Runtime;
 using Src.Implementations;
 using Src.Implementations.Helplers;
@@ -13,7 +14,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Đường dẫn đến database
         int option;
         do
         {
@@ -60,6 +60,25 @@ class Program
                                     }
                                 }while(palworldOption != 0);
                                 break;
+                            case 2:
+                                int minecraftOption;
+                                do
+                                {
+                                    ConsoleUI.Display_MinecraftMenu();
+                                    Console.WriteLine();
+                                    Console.WriteLine("Chọn: ");
+                                    minecraftOption = Convert.ToInt32(Console.ReadLine());
+                                    switch (minecraftOption)
+                                    {
+                                        case 1:
+                                            MinecraftTask.RegisterAccount();
+                                            break;
+                                        case 2:
+                                            MinecraftTask.LoginAccount();
+                                            break;
+                                    }
+                                }while(minecraftOption != 0);
+                                break;
                             default:
                                 ConsoleUI.Display_ErrorMessage();
                                 Thread.Sleep(3000);
@@ -67,23 +86,8 @@ class Program
                         }
                     }while (gameOption != 0);
                     break;
-                case 2:
-                    int toolsOption;
-                    do
-                    {
-                        ConsoleUI.Display_ToolsMenu();
-                        Console.WriteLine();
-                        toolsOption = Convert.ToInt32(Console.ReadLine());
-                        switch (toolsOption)
-                        {
-                            default:
-                                ConsoleUI.Display_ErrorMessage();
-                                break;
-                        }
-                    }while (toolsOption != 0);
-                    break;
                 case 10:
-                    Console.ReadLine();
+                    MinecraftTask.LoginAccount();
                     break;
             }
         }while (option != 0);

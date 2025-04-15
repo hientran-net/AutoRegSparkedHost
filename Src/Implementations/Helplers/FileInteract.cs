@@ -2,10 +2,8 @@
 
 namespace Src.Implementations.Helplers;
 
-public class FileReader : IFileReader
+public class FileInteract : IFileInteract
 {
-    private static string emailFilePath = @"D:\University\Own_Project\2025\AutoRegSparkedHost\Src\Resources\emails.txt";
-    private static string passwordFilePath = @"D:\University\Own_Project\2025\AutoRegSparkedHost\Src\Resources\passwords.txt";
     public static string ReadLink(string filePath)
     {
         if (File.Exists(filePath))
@@ -17,12 +15,12 @@ public class FileReader : IFileReader
         return null;
     }
 
-    public static string GetEmailToLogin()
+    public static string GetEmailToLogin(string filePath)
     {
         try
         {
             // Đọc tất cả các dòng từ file
-            string[] lines = File.ReadAllLines(emailFilePath);
+            string[] lines = File.ReadAllLines(filePath);
             if (lines.Length == 0)
             {
                 Console.WriteLine("File email trống!");
@@ -43,12 +41,12 @@ public class FileReader : IFileReader
         }
     }
 
-    public static string GetPasswordToLogin(string selectedEmail)
+    public static string GetPasswordToLogin(string selectedEmail, string filePath)
     {
         try
         {
             // Đọc tất cả các dòng từ file password
-            string[] passwordLines = File.ReadAllLines(passwordFilePath);
+            string[] passwordLines = File.ReadAllLines(filePath);
             if (passwordLines.Length == 0)
             {
                 Console.WriteLine("File password trống!");
@@ -67,5 +65,10 @@ public class FileReader : IFileReader
             Console.WriteLine($"Lỗi khi đọc file password: {ex.GetType().Name} - {ex.Message}");
             return null;
         }
+    }
+
+    public static void SaveContentToFile(string filePath, string content)
+    {
+        File.WriteAllText(filePath, content + Environment.NewLine);
     }
 }
